@@ -12,21 +12,21 @@ namespace UnnamedGame
 
         public OptionsData()
         {
-            testString = "supertest";
             Options = new ObservableCollection<Option>
             {
-                new Option(),
-                new Option()
-            };
-            TestStrings = new ObservableCollection<String>
-            {
-                "test",
-                "test2"
+                new Option("test", () => System.Diagnostics.Trace.WriteLine("Test pressed")),
+                new Option("test2", () => System.Diagnostics.Trace.WriteLine("test2 pressed")),
+                new Option("test3", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
+                new Option("test4444444444444444444444444444444444444444444444444444444444444444444444444", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
+                new Option("test5", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
+                new Option("test6", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
+                new Option("test7", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
+                new Option("test8", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
+                new Option("test9", () => System.Diagnostics.Trace.WriteLine("test3 pressed"))
+
             };
         }
         public ObservableCollection<Option> Options { get; private set; }
-        public String testString { get; set; }
-        public ObservableCollection<String> TestStrings {get; set;}
     }
 
 

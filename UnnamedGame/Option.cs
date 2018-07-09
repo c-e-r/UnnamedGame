@@ -8,12 +8,19 @@ namespace UnnamedGame
 {
     class Option
     {
-
         public Option()
         {
-            Text = "test";
+            this.Text = "test";
+        }
+
+        public Option(String text, Action act)
+        {
+            this.Text = text;
+            this.Act = act;
         }
 
         public string Text { get; set; }
+        public Action Act { get; private set; }
+        
     }
 }

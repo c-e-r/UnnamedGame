@@ -46,45 +46,7 @@ namespace UnnamedGame
             console.Append("yes!\n");
             console.Append("yes!\n");
             console.Append("yes!\n");
-
-            Path p;
-            p = new Path();
-            p.Stroke = Brushes.Black;
-            p.Fill = Brushes.MediumAquamarine;
-            p.StrokeThickness = 4;
-            p.HorizontalAlignment = HorizontalAlignment.Left;
-            p.VerticalAlignment = VerticalAlignment.Center;
-            EllipseGeometry e = new EllipseGeometry();
-            e.RadiusX = 25;
-            e.RadiusY = 25;
-            p.Data = e;
-            //this.Content = p;
-
-            Polygon poly = new Polygon();
-            poly.Stroke = Brushes.Black;
-            poly.Fill = Brushes.LightCyan;
-            poly.StrokeThickness = 4;
-
-
-            poly.Points.Add(new Point(50, 100));
-            poly.Points.Add(new Point(100, 50));
-            poly.Points.Add(new Point(200, 200));
-            poly.Points.Add(new Point(200, 50));
-
-            //this.Content = poly;
-            //this.Content = new Hexagon(150, 150, 25).hex;
-
-            int r = 10;
-            int strokeWidth = 2;
-            int x = 100;
-            int y = 100;
-
-
-            ObservableCollection<String> MyCollection = new ObservableCollection<String>();
-            MyCollection.Add("asfsdg");
-            MyCollection.Add("dgfsrgs");
-
-
+            
              
 
         }
@@ -96,6 +58,7 @@ namespace UnnamedGame
             console.Append("\no!");
 
         }
+
 
         private Boolean AutoScroll = true;
 

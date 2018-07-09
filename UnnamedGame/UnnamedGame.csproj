@@ -63,6 +63,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Console.cs" />
+    <Compile Include="OptionButton.cs" />
     <Compile Include="UnnamedDataContext.cs" />
     <Compile Include="Hexagon.cs" />
     <Compile Include="HexGrid.cs" />
