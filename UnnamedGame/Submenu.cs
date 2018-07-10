@@ -9,14 +9,11 @@ namespace UnnamedGame
 {
     class Submenu
     {
-        public static ObservableCollection<Option> Options(Action<ObservableCollection<Option>> set, Action goBack)
+        public static ObservableCollection<Option> Options(UnnamedDataContext ctx)
         {
-            void Back() => Options(set, goBack);
-
             return new ObservableCollection<Option>
             {
-                new Option("Back", () => set(MainMenu.Options(set, Back))),
-                new Option("test2", () => System.Diagnostics.Trace.WriteLine("test2 pressed"))
+                new Option("Back", () => ctx.PlayerOptions.OptionBack())
 
             };
         }

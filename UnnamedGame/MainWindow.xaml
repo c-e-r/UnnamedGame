@@ -25,14 +25,16 @@
                 HorizontalAlignment="Stretch" VerticalAlignment="Top" />
         <local:HexGrid ClipToBounds="True" x:Name="hexGrid" Margin="10">
         </local:HexGrid>
-        <ScrollViewer DataContext="{Binding PlayerOptions}" Grid.Column="1">
-            <ItemsControl  ItemsSource="{Binding Options}" >
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <local:OptionButton Height="30"  Content="{Binding Text}" HorizontalContentAlignment="Left" Padding="7,0,0,0" ></local:OptionButton>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+        <Grid Grid.Column="1" DataContext="{Binding PlayerOptions}">
+            <ScrollViewer  Grid.Column="1" >
+                <ItemsControl  ItemsSource="{Binding Options}" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <local:OptionButton Height="30"  Content="{Binding Text}" HorizontalContentAlignment="Left" Padding="7,0,0,0" ></local:OptionButton>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Window>

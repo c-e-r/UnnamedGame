@@ -12,7 +12,7 @@ namespace UnnamedGame
         public UnnamedDataContext() {
 
 
-           PlayerOptions = new OptionsData();
+           PlayerOptions = new OptionsData(this);
         }
 
         public OptionsData PlayerOptions { get; set; }

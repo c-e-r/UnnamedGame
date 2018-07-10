@@ -2,21 +2,32 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace UnnamedGame
 {
     class OptionsData : INotifyPropertyChanged
     {
         private ObservableCollection<Option> _options;
+        private Stack<Func<UnnamedDataContext, ObservableCollection<Option>>> OptionsStack;
+        private Func<UnnamedDataContext, ObservableCollection<Option>> CurrentOption;
+        private bool _back;
 
-        public OptionsData()
+        private UnnamedDataContext ctx;
+
+        public OptionsData(UnnamedDataContext ctx)
         {
-            Options = MainMenu.Options(new Action<ObservableCollection<Option>>((opt) => Options = opt), null);
+            OptionsStack = new Stack<Func<UnnamedDataContext, ObservableCollection<Option>>>();
+            this.ctx = ctx;
+            SetOptions((context) => MainMenu.Options(context));
         }
+
+
 
         public ObservableCollection<Option> Options
         {
@@ -41,11 +52,23 @@ namespace UnnamedGame
             }
         }
 
-        public void SetOptions(ObservableCollection<Option> opt)
+        public void SetOptions(Func<UnnamedDataContext, ObservableCollection<Option>> opt)
         {
-            Options = opt;
+            OptionsStack.Push(CurrentOption);
+            CurrentOption = opt;
+            Options = opt(ctx);
         }
+
+        public void OptionBack()
+        {
+            
+            if (OptionsStack.Count != 0)
+            {
+                CurrentOption = OptionsStack.Pop();
+                Options = CurrentOption(ctx);
+            }
+            
+        }
+
     }
-
-
 }

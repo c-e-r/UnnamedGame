@@ -24,6 +24,7 @@ namespace UnnamedGame
 
         //Console console = new Console();
 
+
         public MainWindow()
         {
 
@@ -88,5 +89,7 @@ namespace UnnamedGame
                 scrollViewer.ScrollToVerticalOffset(scrollViewer.ExtentHeight);
             }
         }
+
+        
     }
 }
