@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace UnnamedGame
 {
-    class Submenu
+    class Submenu : UnnamedMenu
     {
-        public static ObservableCollection<Option> Options(UnnamedDataContext ctx)
+        public Submenu(UnnamedDataContext ctx, Func<UnnamedMenu> back)
         {
-            return new ObservableCollection<Option>
-            {
-                new Option("Back", () => ctx.PlayerOptions.OptionBack())
-
-            };
+            Options = new ObservableCollection<Option>();
+            Options.Add(new Option("text", () => Debug.Write("asdas")));
+            Options.Add(new Option("sdgfdfg", () => ctx.PlayerOptions.Menu = back()));
         }
+
     }
 }

@@ -4,27 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace UnnamedGame
 {
-    class MainMenu
+    class MainMenu : UnnamedMenu
     {
-
-        public static ObservableCollection<Option> Options(UnnamedDataContext ctx)
+        public MainMenu(UnnamedDataContext ctx, Func<UnnamedMenu> back)
         {
-            return new ObservableCollection<Option>
-            {
-                new Option("Go to sub menu", () => ctx.PlayerOptions.SetOptions(Submenu.Options)),
-                new Option("test2", () => ctx.PlayerOptions.SetOptions(Submenu.Options)),
-                new Option("test3", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
-                new Option("test", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
-                new Option("test5", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
-                new Option("test6", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
-                new Option("test7", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
-                new Option("test8", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
-                new Option("test9", () => System.Diagnostics.Trace.WriteLine("test3 pressed"))
+            Options = new ObservableCollection<Option>();
+            Options.Add(new Option("text", () => Debug.WriteLine(ctx.PlayerOptions.Menu)));
+            Options.Add(new Option("submenu", () => ctx.PlayerOptions.Menu = new Submenu(ctx, () => new MainMenu(ctx, back))));
 
-            };
         }
+
     }
 }

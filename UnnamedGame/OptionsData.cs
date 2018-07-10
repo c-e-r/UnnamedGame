@@ -9,14 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace UnnamedGame
+namespace UnnamedGame 
 {
-    class OptionsData : INotifyPropertyChanged
+    class OptionsData  : INotifyPropertyChanged
     {
-        private ObservableCollection<Option> _options;
         private Stack<Func<UnnamedDataContext, ObservableCollection<Option>>> OptionsStack;
         private Func<UnnamedDataContext, ObservableCollection<Option>> CurrentOption;
-        private bool _back;
+        private UnnamedMenu _menu;
 
         private UnnamedDataContext ctx;
 
@@ -24,24 +23,22 @@ namespace UnnamedGame
         {
             OptionsStack = new Stack<Func<UnnamedDataContext, ObservableCollection<Option>>>();
             this.ctx = ctx;
-            SetOptions((context) => MainMenu.Options(context));
+            Menu = new MainMenu(ctx, null);
         }
 
 
-
-        public ObservableCollection<Option> Options
+        public UnnamedMenu Menu
         {
-            get => _options;
-            private set
+            get => _menu;
+            set
             {
-                if (value != _options)
+                if (value != _menu)
                 {
-                    _options = value;
+                    _menu = value;
                     NotifyPropertyChanged();
                 }
             }
         }
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
@@ -52,11 +49,14 @@ namespace UnnamedGame
             }
         }
 
+
+
+
         public void SetOptions(Func<UnnamedDataContext, ObservableCollection<Option>> opt)
         {
             OptionsStack.Push(CurrentOption);
             CurrentOption = opt;
-            Options = opt(ctx);
+            //Options = opt(ctx);
         }
 
         public void OptionBack()
@@ -65,7 +65,7 @@ namespace UnnamedGame
             if (OptionsStack.Count != 0)
             {
                 CurrentOption = OptionsStack.Pop();
-                Options = CurrentOption(ctx);
+                //Options = CurrentOption(ctx);
             }
             
         }

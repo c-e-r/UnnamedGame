@@ -26,7 +26,7 @@
         <local:HexGrid ClipToBounds="True" x:Name="hexGrid" Margin="10">
         </local:HexGrid>
         <Grid Grid.Column="1" DataContext="{Binding PlayerOptions}">
-            <ScrollViewer  Grid.Column="1" >
+            <ScrollViewer DataContext="{Binding Menu}" Grid.Column="1" >
                 <ItemsControl  ItemsSource="{Binding Options}" >
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>

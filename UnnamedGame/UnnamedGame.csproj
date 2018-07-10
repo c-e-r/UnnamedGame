@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="MainMenu.cs" />
     <Compile Include="Console.cs" />
+    <Compile Include="UnnamedMenu.cs" />
     <Compile Include="OptionButton.cs" />
     <Compile Include="Submenu.cs" />
     <Compile Include="UnnamedDataContext.cs" />
