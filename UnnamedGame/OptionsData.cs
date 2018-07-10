@@ -15,13 +15,13 @@ namespace UnnamedGame
 
         public OptionsData()
         {
-            Options = MainMenu.Options(new Action<ObservableCollection<Option>>((opt) => Options = opt));
+            Options = MainMenu.Options(new Action<ObservableCollection<Option>>((opt) => Options = opt), null);
         }
 
         public ObservableCollection<Option> Options
         {
-            get => _options; private 
-            set
+            get => _options;
+            private set
             {
                 if (value != _options)
                 {
