@@ -1,32 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace UnnamedGame
 {
-    class OptionsData
+    class OptionsData : INotifyPropertyChanged
     {
+        private ObservableCollection<Option> _options;
 
         public OptionsData()
         {
-            Options = new ObservableCollection<Option>
-            {
-                new Option("test", () => System.Diagnostics.Trace.WriteLine("Test pressed")),
-                new Option("test2", () => System.Diagnostics.Trace.WriteLine("test2 pressed")),
-                new Option("test3", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
-                new Option("test4444444444444444444444444444444444444444444444444444444444444444444444444", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
-                new Option("test5", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
-                new Option("test6", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
-                new Option("test7", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
-                new Option("test8", () => System.Diagnostics.Trace.WriteLine("test3 pressed")),
-                new Option("test9", () => System.Diagnostics.Trace.WriteLine("test3 pressed"))
-
-            };
+            Options = MainMenu.Options(new Action<ObservableCollection<Option>>((opt) => Options = opt));
         }
-        public ObservableCollection<Option> Options { get; private set; }
+
+        public ObservableCollection<Option> Options
+        {
+            get => _options; private 
+            set
+            {
+                if (value != _options)
+                {
+                    _options = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public void SetOptions(ObservableCollection<Option> opt)
+        {
+            Options = opt;
+        }
     }
 
 
