@@ -9,10 +9,12 @@ namespace UnnamedGame
     class UnnamedDataContext
     {
 
-        public UnnamedDataContext() {
+        public UnnamedDataContext()
+        {
+
+            PlayerOptions = new OptionsData(this);
 
 
-           PlayerOptions = new OptionsData(this);
         }
 
         public OptionsData PlayerOptions { get; set; }

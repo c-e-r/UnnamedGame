@@ -16,7 +16,7 @@ namespace UnnamedGame
             Return = () => new MainMenu(Ctx, GoBack);
 
             Options = new ObservableCollection<Option>();
-            Options.Add(new Option("text", () => Debug.WriteLine(Ctx.PlayerOptions.Menu)));
+            Options.Add(new Option("text", () =>Next(new EventMenu(Ctx, Return, "test.xml"))));
             Options.Add(new Option("submenu", () => Next(new Submenu(Ctx, Return))));
 
         }

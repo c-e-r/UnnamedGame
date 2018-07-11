@@ -1,0 +1,31 @@
+<test>
+	<branch key="start">
+		<text>text 1</text>
+		<text>text 2</text>
+		<text>text 3</text>
+		<choice>
+			<option text="option 1">
+				<text>option 1 text</text>
+				<end/>
+				<addItem/>
+				<goto key="two"/>
+			</option>
+			<option text="option 2">
+				<text>option 2 text</text>
+				<end/>
+			</option>
+			<option text="option 3">
+				<text>option 3 text</text>
+				<end/>
+			</option>
+		</choice>
+		<end/>
+	</branch>
+	
+	<branch key="two">
+		<text/>
+		<text/>
+		<text/>
+		<end/>
+	</branch>
+</test>
