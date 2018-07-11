@@ -13,6 +13,22 @@ namespace UnnamedGame
     {
         private ObservableCollection<Option> _options;
 
+
+        public UnnamedMenu(UnnamedDataContext ctx, Func<UnnamedMenu> goBack)
+        {
+            Ctx = ctx;
+            GoBack = goBack;
+        }
+
+        public UnnamedDataContext Ctx { get; set; }
+        public Func<UnnamedMenu> GoBack { get; set; }
+        public Func<UnnamedMenu> Return { get; set; }
+
+        public void Next(UnnamedMenu menu)
+        {
+            Ctx.PlayerOptions.Menu = menu;
+        }
+
         public ObservableCollection<Option> Options
         {
             get => _options;
@@ -33,10 +49,6 @@ namespace UnnamedGame
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
-        }
-        protected static Action Back(UnnamedDataContext ctx)
-        {
-            return () => ctx.PlayerOptions.OptionBack();
         }
     }
 }
