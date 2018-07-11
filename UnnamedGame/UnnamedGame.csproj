@@ -62,7 +62,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EventBuilder.cs" />
     <Compile Include="EventMenu.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Console.cs" />
@@ -109,4 +108,7 @@
     <Resource Include="data\test.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY "$(SolutionDir)UnnamedGame\data" "$(TargetDir)data" /I /E /Y</PostBuildEvent>
+  </PropertyGroup>
 </Project>

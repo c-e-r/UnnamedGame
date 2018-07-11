@@ -23,7 +23,7 @@ namespace UnnamedGame
 
 
             Options = new ObservableCollection<Option>();
-            XmlDocument doc = new XmlDocument();
+            doc = new XmlDocument();
 
             Debug.WriteLine(ctx.PlayerOptions.Menu);
 
@@ -64,7 +64,6 @@ namespace UnnamedGame
         {
             CurrentNode = CurrentNode.NextSibling;
             return node.NextSibling;
-            return null;
         }
 
         private void Text(XmlNode textNode)
