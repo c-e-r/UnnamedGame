@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace UnnamedGame
         }
 
 
-        abstract public void Activate();
+        abstract public void Activate(object sender, EntityEventArgs e);
 
 
         abstract public void Update();

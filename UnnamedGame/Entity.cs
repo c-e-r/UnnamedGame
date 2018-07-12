@@ -20,13 +20,31 @@ namespace UnnamedGame
         private Dictionary<DmgType, int> _armor;
         private Dictionary<Stat, int> _mults;
 
+        private List<Effect> Effects;
+
         private int _hp;
         private int _stamina;
         private int _mana;
 
+        public event EventHandler<EntityEventArgs> EntityEvent;
+
         public Entity()
         {
-            _stats[Stat.VIT] = 0;
+            EntityEvent += new TestEffect().Activate;
+
+            TestEvent();
+        }
+
+        protected virtual void OnEntityEvent(EntityEventArgs e)
+        {
+            EntityEvent?.Invoke(this, e);
+        }
+
+       
+
+        public void TestEvent()
+        {
+            OnEntityEvent(new EntityEventArgs(EntityEventArgs.Reason.Test));
         }
 
         public int getResist(DmgType type)
