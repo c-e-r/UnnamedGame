@@ -9,17 +9,17 @@ using System.Xml;
 
 namespace UnnamedGame
 {
-    class EventMenu : UnnamedMenu
+    public class EventMenu : UnnamedMenu
     {
 
         private XmlNode CurrentNode;
         private XmlDocument doc;
 
 
-        public EventMenu(UnnamedDataContext ctx, Func<UnnamedMenu> goBack, String eventFile)
-            : base(ctx, goBack)
+        public EventMenu(UnnamedDataContext ctx, Func<UnnamedMenu> prevMenu, String eventFile)
+            : base(ctx, prevMenu)
         {
-            Return = () => new EventMenu(Ctx, GoBack, eventFile);
+            ThisMenu = () => new EventMenu(ctx, prevMenu, eventFile);
 
 
             Options = new ObservableCollection<Option>();

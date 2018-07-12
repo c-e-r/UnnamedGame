@@ -8,19 +8,21 @@ using System.Diagnostics;
 
 namespace UnnamedGame
 {
-    class MainMenu : UnnamedMenu
+    public class MainMenu : UnnamedMenu
     {
-        public MainMenu(UnnamedDataContext ctx, Func<UnnamedMenu> goBack)
-            : base(ctx, goBack)
+        public MainMenu(UnnamedDataContext ctx, Func<UnnamedMenu> prevMenu)
+            : base(ctx, prevMenu)
         {
-            Return = () => new MainMenu(Ctx, GoBack);
+            ThisMenu = () => new MainMenu(ctx, prevMenu);
 
             Options = new ObservableCollection<Option>();
-            Options.Add(new Option("Start Test Event", () =>Next(new EventMenu(Ctx, Return, "test.xml"))));
-            Options.Add(new Option("submenu", () => Next(new Submenu(Ctx, Return))));
-            Options.Add(new Option("Create Entity", ()=> new Entity(Ctx.Time)));
-            Options.Add(new Option("Create Effect From XML", () => Effect.EffectFromXml("effect.xml", new Entity(Ctx.Time))));
+            Options.Add(new Option("Start Test Event", () =>Next(new EventMenu(Ctx, ThisMenu, "test.xml"))));
+            Options.Add(new Option("submenu", () => Next(new Submenu(Ctx, ThisMenu))));
+            Options.Add(new Option("Create Entity", ()=> new Entity(Ctx)));
+            Options.Add(new Option("Create Effect From XML", () => Effect.EffectFromXml("effect.xml", new Entity(Ctx))));
             Options.Add(new Option("Pass Time", () => Ctx.Time.Pass(3)));
+            Options.Add(new Option("Start Test Combat", () => new Combat(Ctx, Ctx.Player, new Entity(Ctx))));
+
 
 
         }

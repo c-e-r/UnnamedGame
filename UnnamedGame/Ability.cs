@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UnnamedGame
 {
-    class Ability
+    public class Ability
     {
 
         private List<Effect> effects;
@@ -14,6 +14,15 @@ namespace UnnamedGame
         private String id;  
         private bool offensive;
         private int cost;
+
+        public String name;
+        public String description;
+
+        public Ability(String name)
+        {
+            this.name = name;
+            description = "Test ability";
+        }
 
 
         

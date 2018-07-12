@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UnnamedGame
 {
-    class Option
+    public class Option
     {
         public Option()
         {

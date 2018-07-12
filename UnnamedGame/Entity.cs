@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using UnnamedGame.Menu;
 
 namespace UnnamedGame
 {
@@ -24,18 +25,23 @@ namespace UnnamedGame
 
         private List<Effect> Effects;
 
-        private List<Ability> Abilities;
+        public List<Ability> Abilities { get; set; }
 
         private int _hp;
         private int _stamina;
         private int _mana;
 
+        private UnnamedDataContext Ctx;
+
         public event EventHandler<EntityEventArgs> EntityEvent;
 
-        public Entity(WorldTime time)
+        public Entity(UnnamedDataContext ctx)
         {
-            time.PropertyChanged += Time_PropertyChanged;
-            
+            Ctx = ctx;
+            Ctx.Time.PropertyChanged += Time_PropertyChanged;
+
+            Abilities = new List<Ability>();
+
 
             EntityEvent += new TestEffect().Activate;
 
@@ -62,6 +68,11 @@ namespace UnnamedGame
         public void TestEvent()
         {
             OnEntityEvent(new EntityEventArgs(EntityEventArgs.Reason.Test));
+        }
+
+        public void SelectAction(Action<Ability> Act)
+        {
+            Ctx.PlayerOptions.Menu = new SelectActionMenu(Ctx, null, this, Act);
         }
 
 

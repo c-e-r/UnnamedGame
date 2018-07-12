@@ -63,13 +63,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Combat.cs" />
     <Compile Include="Effect\Effect.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="EntityEventArgs.cs" />
+    <Compile Include="Menu\CombatMenu.cs" />
     <Compile Include="Menu\EventMenu.cs" />
     <Compile Include="Menu\MainMenu.cs" />
     <Compile Include="Console.cs" />
     <Compile Include="Effect\TestEffect.cs" />
+    <Compile Include="Menu\SelectAbilityMenu.cs" />
+    <Compile Include="Menu\SelectActionMenu.cs" />
     <Compile Include="WorldTime.cs" />
     <Compile Include="Menu\UnnamedMenu.cs" />
     <Compile Include="OptionButton.cs" />

@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace UnnamedGame
 {
-    class UnnamedMenu : INotifyPropertyChanged
+    public class UnnamedMenu : INotifyPropertyChanged
     {
         private ObservableCollection<Option> _options;
 
 
-        public UnnamedMenu(UnnamedDataContext ctx, Func<UnnamedMenu> goBack)
+        public UnnamedMenu(UnnamedDataContext ctx, Func<UnnamedMenu> prevMenu)
         {
             Ctx = ctx;
-            GoBack = goBack;
+            PrevMenu = prevMenu;
         }
 
         public UnnamedDataContext Ctx { get; set; }
-        public Func<UnnamedMenu> GoBack { get; set; }
-        public Func<UnnamedMenu> Return { get; set; }
+        protected Func<UnnamedMenu> ThisMenu { get; set; }
+        protected Func<UnnamedMenu> PrevMenu { get; set; }
 
         public void Next(UnnamedMenu menu)
         {

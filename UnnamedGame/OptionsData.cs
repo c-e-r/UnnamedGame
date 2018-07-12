@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace UnnamedGame 
 {
-    class OptionsData  : INotifyPropertyChanged
+    public class OptionsData  : INotifyPropertyChanged
     {
         private Stack<Func<UnnamedDataContext, ObservableCollection<Option>>> OptionsStack;
         private Func<UnnamedDataContext, ObservableCollection<Option>> CurrentOption;
