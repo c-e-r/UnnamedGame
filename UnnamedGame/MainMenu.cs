@@ -18,8 +18,10 @@ namespace UnnamedGame
             Options = new ObservableCollection<Option>();
             Options.Add(new Option("Start Test Event", () =>Next(new EventMenu(Ctx, Return, "test.xml"))));
             Options.Add(new Option("submenu", () => Next(new Submenu(Ctx, Return))));
-            Options.Add(new Option("Create Entity", ()=> new Entity()));
+            Options.Add(new Option("Create Entity", ()=> new Entity(Ctx.Time)));
             Options.Add(new Option("Create Effect From XML", () => Effect.EffectFromXml("effect.xml")));
+            Options.Add(new Option("Pass Time", () => Ctx.Time.Pass(3)));
+
 
         }
 

@@ -8,7 +8,7 @@ namespace UnnamedGame
 {
     public class EntityEventArgs : EventArgs
     {
-        public enum Reason { Test }
+        public enum Reason { Test, Time }
 
 
         public Reason Rsn { get; set; }

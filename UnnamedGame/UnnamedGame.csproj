@@ -69,6 +69,7 @@
     <Compile Include="MainMenu.cs" />
     <Compile Include="Console.cs" />
     <Compile Include="TestEffect.cs" />
+    <Compile Include="WorldTime.cs" />
     <Compile Include="UnnamedMenu.cs" />
     <Compile Include="OptionButton.cs" />
     <Compile Include="Submenu.cs" />

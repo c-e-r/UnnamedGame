@@ -13,12 +13,12 @@ namespace UnnamedGame
         {
 
             PlayerOptions = new OptionsData(this);
-
+            Time = new WorldTime();
 
         }
 
         public OptionsData PlayerOptions { get; set; }
-
+        public WorldTime Time { get; set; }
     }
 
 }

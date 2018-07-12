@@ -67,6 +67,7 @@ namespace UnnamedGame
 
         public void Activate(object sender, EntityEventArgs e)
         {
+            Debug.WriteLine(e.Rsn);
             Apply((Entity) sender);
         }
 

@@ -30,18 +30,25 @@ namespace UnnamedGame
 
         public event EventHandler<EntityEventArgs> EntityEvent;
 
-        public Entity()
+        public Entity(WorldTime time)
         {
-
+            time.PropertyChanged += Time_PropertyChanged;
             
 
             EntityEvent += new TestEffect().Activate;
+
 
             TestEvent();
 
 
 
         }
+
+        private void Time_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            OnEntityEvent(new EntityEventArgs(EntityEventArgs.Reason.Time));
+        }
+
 
         protected virtual void OnEntityEvent(EntityEventArgs e)
         {
@@ -54,6 +61,8 @@ namespace UnnamedGame
         {
             OnEntityEvent(new EntityEventArgs(EntityEventArgs.Reason.Test));
         }
+
+
 
         public int getResist(DmgType type)
         {
