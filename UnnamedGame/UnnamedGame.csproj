@@ -67,7 +67,6 @@
     <Compile Include="Effect\Effect.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="EntityEventArgs.cs" />
-    <Compile Include="Menu\CombatMenu.cs" />
     <Compile Include="Menu\EventMenu.cs" />
     <Compile Include="Menu\MainMenu.cs" />
     <Compile Include="Console.cs" />

@@ -29,7 +29,7 @@ namespace UnnamedGame
         {
 
             InitializeComponent();
-            DataContext = new UnnamedDataContext();
+            DataContext = new UnnamedDataContext(console);
 
 
             console.Inlines.Add(new Run("test") { Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 255)) });

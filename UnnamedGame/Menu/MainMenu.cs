@@ -22,6 +22,7 @@ namespace UnnamedGame
             Options.Add(new Option("Create Effect From XML", () => Effect.EffectFromXml("effect.xml", new Entity(Ctx))));
             Options.Add(new Option("Pass Time", () => Ctx.Time.Pass(3)));
             Options.Add(new Option("Start Test Combat", () => new Combat(Ctx, Ctx.Player, new Entity(Ctx))));
+            Options.Add(new Option("Console Test", () => ctx.Cnsl.Append("test") ));
 
 
 
