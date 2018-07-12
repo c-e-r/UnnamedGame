@@ -1,0 +1,10 @@
+<effect
+name="Test Effect"
+duration="4"
+increment="2"
+resistType="none"
+>
+
+
+
+</effect>
