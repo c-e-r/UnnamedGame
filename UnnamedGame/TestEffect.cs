@@ -9,7 +9,7 @@ namespace UnnamedGame
 {
     class TestEffect : Effect
     {
-        public override void Trigger()
+        public override void Trigger(Entity entity)
         {
             Debug.WriteLine("TestEffect triggered");
         }

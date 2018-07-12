@@ -33,14 +33,19 @@ namespace UnnamedGame
 
         public void Activate(object sender, EntityEventArgs e)
         {
-            Trigger();
+            Apply((Entity) sender);
+        }
+
+        public void Apply(Entity entity)
+        {
+            Trigger(entity);
             foreach (Effect effect in children)
             {
-                effect.Activate(sender, e);
+                effect.Apply(entity);
             }
         }
 
-        public abstract void Trigger();
+        public abstract void Trigger(Entity entity);
 
         public abstract void Update();
 
