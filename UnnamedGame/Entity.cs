@@ -24,6 +24,8 @@ namespace UnnamedGame
 
         private List<Effect> Effects;
 
+        private List<Ability> Abilities;
+
         private int _hp;
         private int _stamina;
         private int _mana;

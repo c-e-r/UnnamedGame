@@ -40,13 +40,14 @@ namespace UnnamedGame
 
         protected List<Effect> children;
 
+        protected Entity creator;
 
         public Effect()
         {
             children = new List<Effect>();
         }
 
-        public static Effect EffectFromXml(String filename)
+        public static Effect EffectFromXml(String filename, Entity creator)
         {
 
             Effect test;
