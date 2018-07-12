@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace UnnamedGame
 {
-    class Entity
+    public class Entity
     {
 
         public enum Stat { VIT, STR, DEX, INT, SPI, LCK }
@@ -30,9 +32,15 @@ namespace UnnamedGame
 
         public Entity()
         {
+
+            
+
             EntityEvent += new TestEffect().Activate;
 
             TestEvent();
+
+
+
         }
 
         protected virtual void OnEntityEvent(EntityEventArgs e)

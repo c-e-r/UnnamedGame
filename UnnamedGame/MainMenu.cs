@@ -19,6 +19,7 @@ namespace UnnamedGame
             Options.Add(new Option("Start Test Event", () =>Next(new EventMenu(Ctx, Return, "test.xml"))));
             Options.Add(new Option("submenu", () => Next(new Submenu(Ctx, Return))));
             Options.Add(new Option("Create Entity", ()=> new Entity()));
+            Options.Add(new Option("Create Effect From XML", () => Effect.EffectFromXml("effect.xml")));
 
         }
 

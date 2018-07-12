@@ -1,10 +1,11 @@
-<effect
-name="Test Effect"
+<TestEffect
+name="Test Effect Test"
 duration="4"
 increment="2"
 resistType="none"
+acc="3"
 >
 
 
 
-</effect>
+</TestEffect>

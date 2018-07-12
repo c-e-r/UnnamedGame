@@ -4,10 +4,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace UnnamedGame
 {
-    class TestEffect : Effect
+    [Serializable]
+    [XmlRoot("TestEffect")]
+    public class TestEffect : Effect
     {
         public override void Trigger(Entity entity)
         {

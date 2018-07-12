@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UnnamedGame
 {
-    class EntityEventArgs : EventArgs
+    public class EntityEventArgs : EventArgs
     {
         public enum Reason { Test }
 
