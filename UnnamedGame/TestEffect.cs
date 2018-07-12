@@ -9,9 +9,9 @@ namespace UnnamedGame
 {
     class TestEffect : Effect
     {
-        public override void Activate(object sender, EntityEventArgs e)
+        public override void Trigger()
         {
-            Debug.WriteLine(e.Rsn);
+            Debug.WriteLine("TestEffect triggered");
         }
 
         public override void Update()

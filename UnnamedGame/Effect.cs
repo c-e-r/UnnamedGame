@@ -27,14 +27,22 @@ namespace UnnamedGame
 
         public Effect()
         {
-
+            children = new List<Effect>();
         }
 
 
-        abstract public void Activate(object sender, EntityEventArgs e);
+        public void Activate(object sender, EntityEventArgs e)
+        {
+            Trigger();
+            foreach (Effect effect in children)
+            {
+                effect.Activate(sender, e);
+            }
+        }
 
+        public abstract void Trigger();
 
-        abstract public void Update();
+        public abstract void Update();
 
     }
 }
