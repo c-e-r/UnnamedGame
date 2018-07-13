@@ -78,7 +78,7 @@
     <Compile Include="Menu\SelectActionMenu.cs" />
     <Compile Include="Item\ArmourInfo.cs" />
     <Compile Include="Item\WeaponInfo.cs" />
-    <Compile Include="ArmorDictionary.cs" />
+    <Compile Include="EnumPair.cs" />
     <Compile Include="WorldTime.cs" />
     <Compile Include="Menu\UnnamedMenu.cs" />
     <Compile Include="OptionButton.cs" />

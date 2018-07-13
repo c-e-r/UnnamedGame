@@ -11,12 +11,9 @@ maxuses="1"
     critmult="4"
     />
     <Armour>
-        <Reduction
-        Fire="3"
-        />
-        <Resistance
-        Cold="40"
-        />
+        <Reduction Type="Fire" Value="3"/>
+        <Resitance Type="Cold" Value="40"/>
+
     </Armour>
 
 </Item>

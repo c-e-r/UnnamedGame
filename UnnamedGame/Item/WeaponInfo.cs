@@ -7,16 +7,17 @@ using System.Xml.Serialization;
 
 namespace UnnamedGame
 {
+    [Serializable]
     public class WeaponInfo
     {
-        [XmlAttribute("hit")]
-        public int WepHitChance { get; set; }
-        [XmlAttribute("damage")]
-        public int WepDamage { get; set; }
-        [XmlAttribute("crit")]
-        public int WepCritChance { get; set; }
-        [XmlAttribute("critMult")]
-        public int WepCritMult { get; set; }
+        [XmlAttribute]
+        public int HitChance { get; set; }
+        [XmlAttribute]
+        public int Damage { get; set; }
+        [XmlAttribute]
+        public int CritChance { get; set; }
+        [XmlAttribute]
+        public double CritMult { get; set; }
 
 
     }

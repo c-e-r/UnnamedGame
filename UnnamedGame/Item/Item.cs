@@ -20,10 +20,9 @@ namespace UnnamedGame
         public List<Effect> EquipEffects { get; set; }
         [XmlIgnore]
         public List<Ability> EquipAbilities { get; set; }
-        [XmlElement]
-        public WeaponInfo Weapon { get; set; }
-        [XmlElement]
+
         public ArmourInfo Armour { get; set; }
+        public WeaponInfo Weapon { get; set; }
 
         [XmlIgnore]
         public Ability UseAbiltiy { get; set; }
@@ -56,28 +55,34 @@ namespace UnnamedGame
             stest.MaxUses = 5;
             stest.Weight = 3.2;
             stest.Armour = new ArmourInfo();
+            stest.Weapon = new WeaponInfo();
+            stest.Weapon.Damage = 3;
+            stest.Weapon.CritChance = 2;
+            stest.Weapon.HitChance = 10;
+            stest.Weapon.CritMult = 1.1;
 
             Item test;
             XmlDocument doc = new XmlDocument();
-            doc.Load("data/" + filename);
+            doc.Load("data/serialize.xml");
             String type = doc.FirstChild.Name;
 
             XmlSerializer mySerializer = new XmlSerializer(typeof(Item));
 
-            FileStream myFileStream = new FileStream("data/" + filename, FileMode.Open);
-            FileStream myFileOutStream = new FileStream("data/serialize.xml", FileMode.Create);
-            mySerializer.Serialize(myFileOutStream, stest);
+            FileStream myFileStream = new FileStream("data/serialize.xml", FileMode.Create);
+            mySerializer.Serialize(myFileStream, stest);
+            myFileStream.Close();
+            myFileStream = new FileStream("data/serialize.xml", FileMode.Open);
 
             test = (Item)mySerializer.Deserialize(myFileStream);
+            myFileStream.Close();
 
             Debug.WriteLine(test.Name);
             Debug.WriteLine(test.Uses);
             Debug.WriteLine(test.MaxUses);
             Debug.WriteLine(test.Weight);
-            Debug.WriteLine(test.Weapon.WepDamage);
+            Debug.WriteLine(test.Weapon.Damage);
             Debug.WriteLine(test.Armour);
-            Debug.WriteLine(test.Armour.Resistance.First());
-
+            Debug.WriteLine(test.Armour.GetResistance(Damage.DmgType.Fire));
 
             return null;
         }
