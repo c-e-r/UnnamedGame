@@ -19,7 +19,6 @@ namespace UnnamedGame
                 {
 
                     Point po = EvenqOffsetToPixel(j, i, 10);
-                    System.Diagnostics.Trace.WriteLine(po.X + " " + po.Y);
                     this.Children.Add(new Hexagon((int)po.X + 15, (int)po.Y + 20, 10).hex);
                 }
             }

@@ -28,6 +28,11 @@ namespace UnnamedGame
 
         }
 
+        public Ability()
+        {
+
+        }
+
 
 
 

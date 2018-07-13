@@ -18,10 +18,10 @@ namespace UnnamedGame
         enum Desc { Activate, Resist }
 
 
-        public String id;
+        public String id { get; set; }
 
         [XmlAttribute]
-        public String name;
+        public String Name { get; set; }
 
 
         [XmlAttribute]
@@ -61,7 +61,7 @@ namespace UnnamedGame
 
             test = (Effect)mySerializer.Deserialize(myFileStream);
 
-            Debug.WriteLine(test.name);
+            Debug.WriteLine(test.Name);
 
             return null;
         }
