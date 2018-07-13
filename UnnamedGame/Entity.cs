@@ -16,10 +16,11 @@ namespace UnnamedGame
         public enum Stat { VIT, STR, DEX, INT, SPI, LCK }
         public enum SecStat { Health, Mana, Stamina, Hit, Dodge, Heal, Effect, Speed, Crit }
 
+        public Dictionary<Item.ItemSlot, Item> Equipment { get; set; }
 
         private Dictionary<Stat, int> _stats;
         private Dictionary<Damage.DmgType, int> _resistance;
-        private Dictionary<Damage.DmgType, int> _armor;
+        private Dictionary<Damage.DmgType, int> _reduction;
         private Dictionary<Stat, int> _mults;
 
         private List<Effect> Effects;
@@ -104,15 +105,6 @@ namespace UnnamedGame
             return dmg.Value;
         }
 
-        public int GetResist(Damage.DmgType type)
-        {
-            return _resistance[type];
-        }
-
-        public int GetArmor(Damage.DmgType type)
-        {
-            return _armor[type];
-        }
 
         public int GetStat(Stat stat)
         {

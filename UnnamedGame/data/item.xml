@@ -1,0 +1,21 @@
+<item
+weight="5"
+uses="1"
+maxuses="1"
+>
+    <Weapon
+    hit="10"
+    damage="3"
+    crit="2"
+    critmult="4"
+    />
+    <Armor>
+        <Reduction
+        fire="3"
+        />
+        <Resistance
+        cold="40"
+        />
+    <Armor/>
+
+</item>

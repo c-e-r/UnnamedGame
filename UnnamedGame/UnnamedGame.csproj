@@ -69,12 +69,15 @@
     <Compile Include="Effect\Effect.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="EntityEventArgs.cs" />
+    <Compile Include="Item\Item.cs" />
     <Compile Include="Menu\EventMenu.cs" />
     <Compile Include="Menu\MainMenu.cs" />
     <Compile Include="Console.cs" />
     <Compile Include="Effect\TestEffect.cs" />
     <Compile Include="Menu\SelectAbilityMenu.cs" />
     <Compile Include="Menu\SelectActionMenu.cs" />
+    <Compile Include="Item\ArmourInfo.cs" />
+    <Compile Include="Item\WeaponInfo.cs" />
     <Compile Include="WorldTime.cs" />
     <Compile Include="Menu\UnnamedMenu.cs" />
     <Compile Include="OptionButton.cs" />
