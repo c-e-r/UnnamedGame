@@ -9,9 +9,9 @@ namespace UnnamedGame
     public class Ability
     {
 
-        private List<Effect> effects;
+        public List<Effect> Effects { get; private set; }
 
-        private String id;  
+        private String id;
         private bool offensive;
         private int cost;
 
@@ -22,10 +22,14 @@ namespace UnnamedGame
         {
             this.name = name;
             description = "Test ability";
+            Effects = new List<Effect>();
+            Effects.Add(new DamageEffect());
+
+
         }
 
 
-        
+
 
     }
 }

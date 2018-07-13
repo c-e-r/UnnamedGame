@@ -14,13 +14,12 @@ namespace UnnamedGame
     {
 
         public enum Stat { VIT, STR, DEX, INT, SPI, LCK }
-        public enum DmgType { Untyped, Pierce, Slash, Bludge, Fire, Cold, Elec, Sacred, Profane, Poison, Bleed }
         public enum SecStat { Health, Mana, Stamina, Hit, Dodge, Heal, Effect, Speed, Crit }
 
 
         private Dictionary<Stat, int> _stats;
-        private Dictionary<DmgType, int> _resistance;
-        private Dictionary<DmgType, int> _armor;
+        private Dictionary<Damage.DmgType, int> _resistance;
+        private Dictionary<Damage.DmgType, int> _armor;
         private Dictionary<Stat, int> _mults;
 
         private List<Effect> Effects;
@@ -28,8 +27,8 @@ namespace UnnamedGame
         public List<Ability> Abilities { get; set; }
 
         private int _hp;
-        private int _stamina;
-        private int _mana;
+        private int _sp;
+        private int _mp;
 
         private UnnamedDataContext Ctx;
 
@@ -63,6 +62,10 @@ namespace UnnamedGame
             EntityEvent?.Invoke(this, e);
         }
 
+        public String GetStatus()
+        {
+            return "hp: " + _hp + " mp:" + _mp + " sp:" + _sp;
+        }
        
 
         public void TestEvent()
@@ -70,29 +73,53 @@ namespace UnnamedGame
             OnEntityEvent(new EntityEventArgs(EntityEventArgs.Reason.Test));
         }
 
-        public void SelectAction(Action<Ability> Act)
+        public void SelectAction(Action<Ability> act)
         {
-            Ctx.PlayerOptions.Menu = new SelectActionMenu(Ctx, null, this, Act);
+            Ctx.PlayerOptions.Menu = new SelectActionMenu(Ctx, null, this, act);
         }
 
+        public void RecieveAbility(Ability ability)
+        {
+            foreach (Effect effect in ability.Effects)
+            {
+                RecieveEffect(effect);
+            }
+        }
 
+        public void RecieveEffect(Effect effect)
+        {
+            if (effect.IsInstant())
+            {
+                effect.Apply(this);
+            } else
+            {
+                Effects.Add(effect);
+                EntityEvent += effect.Activate;
+            }
+        }
 
-        public int getResist(DmgType type)
+        public int TakeDamage(Damage dmg)
+        {
+            _hp -= dmg.Value;
+            return dmg.Value;
+        }
+
+        public int GetResist(Damage.DmgType type)
         {
             return _resistance[type];
         }
 
-        public int getArmor(DmgType type)
+        public int GetArmor(Damage.DmgType type)
         {
             return _armor[type];
         }
 
-        public int getStat(Stat stat)
+        public int GetStat(Stat stat)
         {
             return _stats[stat];
         }
 
-        public int getSecStat(int stat)
+        public int GetSecStat(int stat)
         {
             switch ((SecStat)stat)
             {

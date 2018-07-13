@@ -77,6 +77,7 @@ namespace UnnamedGame
             Trigger(entity);
             foreach (Effect effect in children)
             {
+
                 effect.Apply(entity);
             }
         }
@@ -85,5 +86,9 @@ namespace UnnamedGame
 
         public abstract void Update();
 
+        public bool IsInstant()
+        {
+            return duration == 0;
+        }
     }
 }

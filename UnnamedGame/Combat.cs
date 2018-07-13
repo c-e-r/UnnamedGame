@@ -10,19 +10,20 @@ namespace UnnamedGame
 {
     class Combat
     {
-        private bool finished;
-        private Entity player;
-        private Entity enemy;
+        private bool Finished;
+        private Entity Player;
+        private Entity Enemy;
         private UnnamedDataContext Ctx;
         private UnnamedMenu PrevMenu;
 
-        public Combat(UnnamedDataContext Ctx, Entity player, Entity enemy)
+        public Combat(UnnamedDataContext ctx, Entity player, Entity enemy)
         {
-            PrevMenu = Ctx.PlayerOptions.Menu;
 
-            this.player = player;
-            this.enemy = enemy;
-            this.Ctx = Ctx;
+            Player = player;
+            Enemy = enemy;
+            Ctx = ctx;
+
+            PrevMenu = Ctx.PlayerOptions.Menu;
 
 
             StartCombat();
@@ -41,7 +42,7 @@ namespace UnnamedGame
 
         private void GetPlayerAction()
         {
-            player.SelectAction(UseAbilities);
+            Player.SelectAction(UseAbilities);
         }
 
         private void HandleTurn()
@@ -49,16 +50,19 @@ namespace UnnamedGame
             Debug.WriteLine("New turn");
 
             //enemy.RandomAction();
-            player.SelectAction(UseAbilities);
+            Player.SelectAction(UseAbilities);
         }
 
         private void UseAbilities(Ability playerAbility)
         {
             Debug.WriteLine("Player Ability '" + playerAbility.name + "' Recieved");
-
+            Debug.WriteLine(Player.GetStatus());
+            Player.RecieveAbility(new Ability("test"));
             Debug.WriteLine("Enemy Action");
+            Debug.WriteLine(Player.GetStatus());
 
-            if (!finished)
+
+            if (!Finished)
             {
                 HandleTurn();
             }
