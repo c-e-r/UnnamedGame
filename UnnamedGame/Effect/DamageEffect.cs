@@ -10,7 +10,11 @@ namespace UnnamedGame
 
     public class DamageEffect : Effect
     {
+        public DamageEffect()
+        {
+            //Children.Add(new TestEffect());
 
+        }
 
         public override void Trigger(Entity entity)
         {

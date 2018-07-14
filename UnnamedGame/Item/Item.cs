@@ -14,11 +14,12 @@ namespace UnnamedGame
     {
 
         public enum ItemSlot { LHand, RHand, LHeld, RHeld, Feet, Head, Body, Neck }
-        [XmlIgnore]
+
+        [XmlArray]
         public List<ItemSlot> ValidSlots { get; set; }
-        [XmlIgnore]
+        [XmlArray]
         public List<Effect> EquipEffects { get; set; }
-        [XmlIgnore]
+        [XmlArray]
         public List<Ability> EquipAbilities { get; set; }
         
         [XmlElement]
@@ -63,7 +64,19 @@ namespace UnnamedGame
             stest.Weapon.HitChance = 10;
             stest.Weapon.CritMult = 1.1;
             stest.UseAbiltiy = new Ability("test");
-            
+            stest.EquipAbilities = new List<Ability>();
+            stest.EquipAbilities.Add(new Ability("test1"));
+            stest.EquipAbilities.Add(new Ability("test2"));
+            stest.EquipEffects = new List<Effect>();
+            stest.EquipEffects.Add(new DamageEffect());
+            stest.EquipEffects.Add(new DamageEffect());
+            stest.ValidSlots = new List<ItemSlot>();
+            stest.ValidSlots.Add(ItemSlot.Body);
+            stest.ValidSlots.Add(ItemSlot.Feet);
+            stest.ValidSlots.Add(ItemSlot.Head);
+
+
+
 
             Item test;
             XmlSerializer mySerializer = new XmlSerializer(typeof(Item));

@@ -1,23 +1,14 @@
-<Item
-name="Test Item"
-weight="5"
-uses="1"
-maxuses="1"
->
-    <Weapon
-    hit="10"
-    damage="3"
-    crit="2"
-    critmult="4"
-    />
-    <Armour>
-        <Reduction Type="Fire" Value="3"/>
-        <Resitance Type="Cold" Value="40"/>
-
-    </Armour>
-	<UseAbility Cost="3" Offensive="false">
-		<Effects>
-		
-		</Effects>
-	</UseAbility>
+<?xml version="1.0"?>
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" weight="3.2" name="test" uses="4" maxUses="5">
+  <Armour>
+    <Resistance Type="Bleed" Value="3" />
+    <Resistance Type="Fire" Value="6" />
+    <Reduction Type="Untyped" Value="9" />
+  </Armour>
+  <Weapon HitChance="10" Damage="3" CritChance="2" CritMult="1.1" />
+  <UseAbiltiy Offensive="false" Cost="0" Name="test" Desc="Test ability">
+    <Effects>
+      <Effect xsi:type="DamageEffect" />
+    </Effects>
+  </UseAbiltiy>
 </Item>

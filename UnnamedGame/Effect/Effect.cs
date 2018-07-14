@@ -12,6 +12,7 @@ namespace UnnamedGame
 {
     [Serializable]
     [XmlInclude(typeof(DamageEffect))]
+    [XmlInclude(typeof(TestEffect))]
     public abstract class Effect
     {
 
@@ -38,14 +39,14 @@ namespace UnnamedGame
         [XmlAttribute]
         protected int increment;
 
-        [XmlElement]
-        protected List<Effect> children;
+        [XmlArray(IsNullable = true)]
+        public List<Effect> Children { get; set; }
 
         protected Entity creator;
 
         public Effect()
         {
-            children = new List<Effect>();
+            Children = new List<Effect>();
         }
 
         public static Effect EffectFromXml(String filename, Entity creator)
@@ -76,7 +77,7 @@ namespace UnnamedGame
         public void Apply(Entity entity)
         {
             Trigger(entity);
-            foreach (Effect effect in children)
+            foreach (Effect effect in Children)
             {
 
                 effect.Apply(entity);
