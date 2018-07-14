@@ -55,7 +55,7 @@ namespace UnnamedGame
 
         private void UseAbilities(Ability playerAbility)
         {
-            Debug.WriteLine("Player Ability '" + playerAbility.name + "' Recieved");
+            Debug.WriteLine("Player Ability '" + playerAbility.Name + "' Recieved");
             Debug.WriteLine(Player.GetStatus());
             Player.RecieveAbility(new Ability("test"));
             Debug.WriteLine("Enemy Action");

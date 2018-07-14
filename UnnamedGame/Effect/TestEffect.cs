@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace UnnamedGame
 {
     [Serializable]
-    [XmlRoot("TestEffect")]
+ 
     public class TestEffect : Effect
     {
         public override void Trigger(Entity entity)

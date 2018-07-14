@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace UnnamedGame
+namespace UnnamedGame 
 {
     [Serializable]
-    [XmlRoot("Effect")]
+    [XmlInclude(typeof(DamageEffect))]
     public abstract class Effect
     {
 
         enum Desc { Activate, Resist }
 
 
-        public String id { get; set; }
+        public String Id { get; set; }
 
         [XmlAttribute]
         public String Name { get; set; }
@@ -38,6 +38,7 @@ namespace UnnamedGame
         [XmlAttribute]
         protected int increment;
 
+        [XmlElement]
         protected List<Effect> children;
 
         protected Entity creator;

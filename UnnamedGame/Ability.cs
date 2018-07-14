@@ -3,28 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace UnnamedGame
 {
+    [Serializable]
     public class Ability
     {
-
-        public List<Effect> Effects { get; private set; }
+        [XmlArrayItem]
+        public List<Effect> Effects { get; set; }
 
         private String id;
-        private bool offensive;
-        private int cost;
+        [XmlAttribute]
+        public bool Offensive { get; set; }
+        [XmlAttribute]
+        public int Cost { get; set; }
 
-        public String name;
-        public String description;
+        [XmlAttribute]
+        public String Name { get; set; }
+        [XmlAttribute]
+        public String Desc { get; set; }
 
         public Ability(String name)
         {
-            this.name = name;
-            description = "Test ability";
+            Name = name;
+            Desc = "Test ability";
             Effects = new List<Effect>();
             Effects.Add(new DamageEffect());
-
+            
 
         }
 

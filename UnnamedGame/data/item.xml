@@ -15,5 +15,9 @@ maxuses="1"
         <Resitance Type="Cold" Value="40"/>
 
     </Armour>
-
+	<UseAbility Cost="3" Offensive="false">
+		<Effects>
+		
+		</Effects>
+	</UseAbility>
 </Item>

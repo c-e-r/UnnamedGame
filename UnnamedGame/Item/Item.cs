@@ -20,11 +20,13 @@ namespace UnnamedGame
         public List<Effect> EquipEffects { get; set; }
         [XmlIgnore]
         public List<Ability> EquipAbilities { get; set; }
-
+        
+        [XmlElement]
         public ArmourInfo Armour { get; set; }
+        [XmlElement]
         public WeaponInfo Weapon { get; set; }
 
-        [XmlIgnore]
+        [XmlElement]
         public Ability UseAbiltiy { get; set; }
 
         [XmlAttribute]
@@ -60,15 +62,14 @@ namespace UnnamedGame
             stest.Weapon.CritChance = 2;
             stest.Weapon.HitChance = 10;
             stest.Weapon.CritMult = 1.1;
+            stest.UseAbiltiy = new Ability("test");
+            
 
             Item test;
-            XmlDocument doc = new XmlDocument();
-            doc.Load("data/serialize.xml");
-            String type = doc.FirstChild.Name;
-
             XmlSerializer mySerializer = new XmlSerializer(typeof(Item));
 
             FileStream myFileStream = new FileStream("data/serialize.xml", FileMode.Create);
+
             mySerializer.Serialize(myFileStream, stest);
             myFileStream.Close();
             myFileStream = new FileStream("data/serialize.xml", FileMode.Open);
@@ -76,6 +77,7 @@ namespace UnnamedGame
             test = (Item)mySerializer.Deserialize(myFileStream);
             myFileStream.Close();
 
+            /*
             Debug.WriteLine(test.Name);
             Debug.WriteLine(test.Uses);
             Debug.WriteLine(test.MaxUses);
@@ -83,6 +85,13 @@ namespace UnnamedGame
             Debug.WriteLine(test.Weapon.Damage);
             Debug.WriteLine(test.Armour);
             Debug.WriteLine(test.Armour.GetResistance(Damage.DmgType.Fire));
+            */
+            Debug.WriteLine(test.UseAbiltiy.Cost);
+            Debug.WriteLine(test.UseAbiltiy.Effects.First().Name);
+            Entity e = new Entity(new UnnamedDataContext( new Console()));
+            Debug.WriteLine(e.GetStatus());
+            e.RecieveAbility(test.UseAbiltiy);
+            Debug.WriteLine(e.GetStatus());
 
             return null;
         }

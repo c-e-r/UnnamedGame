@@ -19,7 +19,7 @@ namespace UnnamedGame.Menu
 
             foreach (Ability ability in entity.Abilities)
             {
-                Options.Add(new Option(ability.name, () => Select(ability)));
+                Options.Add(new Option(ability.Name, () => Select(ability)));
             }
 
         }
