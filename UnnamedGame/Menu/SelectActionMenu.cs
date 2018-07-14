@@ -17,7 +17,7 @@ namespace UnnamedGame.Menu
             Options = new ObservableCollection<Option>();
             Options.Add(new Option("Attack", () => Select(new Ability("Attack"))));
             Options.Add(new Option("Abilities", () => Next(new SelectAbilityMenu(Ctx, ThisMenu, entity, Select))));
-            Options.Add(new Option("Items", () => throw new NotImplementedException()));
+            Options.Add(new Option("Items", () => Next(new SelectItemMenu(Ctx, ThisMenu, entity, Select))));
 
 
         }

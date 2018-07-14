@@ -74,6 +74,7 @@
     <Compile Include="Menu\MainMenu.cs" />
     <Compile Include="Console.cs" />
     <Compile Include="Effect\TestEffect.cs" />
+    <Compile Include="Menu\SelectItemMenu.cs" />
     <Compile Include="Menu\SelectAbilityMenu.cs" />
     <Compile Include="Menu\SelectActionMenu.cs" />
     <Compile Include="Item\ArmourInfo.cs" />

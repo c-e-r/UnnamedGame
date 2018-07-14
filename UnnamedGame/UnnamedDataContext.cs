@@ -19,6 +19,7 @@ namespace UnnamedGame
 
             Player.Abilities.Add(new Ability("test1"));
             Player.Abilities.Add(new Ability("test2"));
+            Player.Items.Add(Item.ItemFromXml("item.xml"));
 
         }
 

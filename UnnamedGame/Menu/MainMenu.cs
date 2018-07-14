@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using UnnamedGame.Menu;
 
 namespace UnnamedGame
 {
     public class MainMenu : UnnamedMenu
     {
+
         public MainMenu(UnnamedDataContext ctx, Func<UnnamedMenu> prevMenu)
             : base(ctx, prevMenu)
         {
@@ -18,13 +20,9 @@ namespace UnnamedGame
             Options = new ObservableCollection<Option>();
             Options.Add(new Option("Start Test Event", () =>Next(new EventMenu(Ctx, ThisMenu, "test.xml"))));
             Options.Add(new Option("submenu", () => Next(new Submenu(Ctx, ThisMenu))));
-            Options.Add(new Option("Create Entity", ()=> new Entity(Ctx)));
-            Options.Add(new Option("Create Effect From XML", () => Effect.EffectFromXml("effect.xml", new Entity(Ctx))));
             Options.Add(new Option("Pass Time", () => Ctx.Time.Pass(3)));
             Options.Add(new Option("Start Test Combat", () => new Combat(Ctx, Ctx.Player, new Entity(Ctx))));
             Options.Add(new Option("Console Test", () => ctx.Cnsl.Append("test") ));
-            Options.Add(new Option("Create Item from xml", () => Item.ItemFromXml("item.xml")));
-            Options.Add(new Option("Armourinfo test", () => new ArmourInfo()));
 
 
 

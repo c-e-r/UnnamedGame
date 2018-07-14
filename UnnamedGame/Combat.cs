@@ -15,6 +15,7 @@ namespace UnnamedGame
         private Entity Enemy;
         private UnnamedDataContext Ctx;
         private UnnamedMenu PrevMenu;
+        private Ability enemyAbility;
 
         public Combat(UnnamedDataContext ctx, Entity player, Entity enemy)
         {
@@ -26,12 +27,13 @@ namespace UnnamedGame
             PrevMenu = Ctx.PlayerOptions.Menu;
 
 
+
             StartCombat();
         }
 
         private void StartCombat()
         {
-            Debug.WriteLine("Combat Started");
+            Ctx.Cnsl.Append("Combat Started" + "\n");
 
 
             HandleTurn();
@@ -47,19 +49,22 @@ namespace UnnamedGame
 
         private void HandleTurn()
         {
-            Debug.WriteLine("New turn");
+            Ctx.Cnsl.Append("New turn" + "\n");
 
             //enemy.RandomAction();
+            enemyAbility = new Ability("Enemy Ability" + "\n");
             Player.SelectAction(UseAbilities);
         }
 
         private void UseAbilities(Ability playerAbility)
         {
-            Debug.WriteLine("Player Ability '" + playerAbility.Name + "' Recieved");
-            Debug.WriteLine(Player.GetStatus());
-            Player.RecieveAbility(new Ability("test"));
-            Debug.WriteLine("Enemy Action");
-            Debug.WriteLine(Player.GetStatus());
+            Ctx.Cnsl.Append("Player" + Player.GetStatus() + "\n");
+            Ctx.Cnsl.Append("Enemy" + Enemy.GetStatus() + "\n");
+
+            Ctx.Cnsl.Append("player used " + playerAbility.Name + "\n");
+            Player.RecieveAbility(enemyAbility);
+            Ctx.Cnsl.Append("Enemy used " + playerAbility.Name + "\n");
+            Enemy.RecieveAbility(playerAbility);
 
 
             if (!Finished)

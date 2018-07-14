@@ -50,63 +50,19 @@ namespace UnnamedGame
 
         }
 
-        public static Effect ItemFromXml(String filename)
+        public static Item ItemFromXml(String filename)
         {
-            Item stest = new Item();
-            stest.Name = "test";
-            stest.Uses = 4;
-            stest.MaxUses = 5;
-            stest.Weight = 3.2;
-            stest.Armour = new ArmourInfo();
-            stest.Weapon = new WeaponInfo();
-            stest.Weapon.Damage = 3;
-            stest.Weapon.CritChance = 2;
-            stest.Weapon.HitChance = 10;
-            stest.Weapon.CritMult = 1.1;
-            stest.UseAbiltiy = new Ability("test");
-            stest.EquipAbilities = new List<Ability>();
-            stest.EquipAbilities.Add(new Ability("test1"));
-            stest.EquipAbilities.Add(new Ability("test2"));
-            stest.EquipEffects = new List<Effect>();
-            stest.EquipEffects.Add(new DamageEffect());
-            stest.EquipEffects.Add(new DamageEffect());
-            stest.ValidSlots = new List<ItemSlot>();
-            stest.ValidSlots.Add(ItemSlot.Body);
-            stest.ValidSlots.Add(ItemSlot.Feet);
-            stest.ValidSlots.Add(ItemSlot.Head);
-
-
-
 
             Item test;
             XmlSerializer mySerializer = new XmlSerializer(typeof(Item));
 
-            FileStream myFileStream = new FileStream("data/serialize.xml", FileMode.Create);
-
-            mySerializer.Serialize(myFileStream, stest);
-            myFileStream.Close();
-            myFileStream = new FileStream("data/serialize.xml", FileMode.Open);
+            FileStream myFileStream = new FileStream("data/" + filename, FileMode.Open);
 
             test = (Item)mySerializer.Deserialize(myFileStream);
             myFileStream.Close();
 
-            /*
-            Debug.WriteLine(test.Name);
-            Debug.WriteLine(test.Uses);
-            Debug.WriteLine(test.MaxUses);
-            Debug.WriteLine(test.Weight);
-            Debug.WriteLine(test.Weapon.Damage);
-            Debug.WriteLine(test.Armour);
-            Debug.WriteLine(test.Armour.GetResistance(Damage.DmgType.Fire));
-            */
-            Debug.WriteLine(test.UseAbiltiy.Cost);
-            Debug.WriteLine(test.UseAbiltiy.Effects.First().Name);
-            Entity e = new Entity(new UnnamedDataContext( new Console()));
-            Debug.WriteLine(e.GetStatus());
-            e.RecieveAbility(test.UseAbiltiy);
-            Debug.WriteLine(e.GetStatus());
-
-            return null;
+            
+            return test;
         }
     }
 }

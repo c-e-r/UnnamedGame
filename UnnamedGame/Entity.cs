@@ -25,7 +25,11 @@ namespace UnnamedGame
 
         private List<Effect> Effects;
 
+        public List<Item> Items { get; set; }
+
         public List<Ability> Abilities { get; set; }
+
+        public String Name { get; set; }
 
         private int _hp;
         private int _sp;
@@ -41,6 +45,7 @@ namespace UnnamedGame
             Ctx.Time.PropertyChanged += Time_PropertyChanged;
 
             Abilities = new List<Ability>();
+            Items = new List<Item>();
 
 
             EntityEvent += new TestEffect().Activate;
@@ -65,7 +70,7 @@ namespace UnnamedGame
 
         public String GetStatus()
         {
-            return "hp: " + _hp + " mp:" + _mp + " sp:" + _sp;
+            return Name + " hp: " + _hp + " mp:" + _mp + " sp:" + _sp;
         }
        
 

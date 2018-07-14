@@ -1,5 +1,24 @@
 <?xml version="1.0"?>
-<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" weight="3.2" name="test" uses="4" maxUses="5">
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" weight="3.2" name="Test Item" uses="4" maxUses="5">
+  <ValidSlots>
+    <ItemSlot>Body</ItemSlot>
+    <ItemSlot>Feet</ItemSlot>
+    <ItemSlot>Head</ItemSlot>
+  </ValidSlots>
+  <EquipEffects>
+    <Effect xsi:type="DamageEffect">
+    </Effect>
+    <Effect xsi:type="DamageEffect">
+    </Effect>
+  </EquipEffects>
+  <EquipAbilities>
+    <Ability Offensive="false" Cost="0" Name="test1" Desc="Test ability">
+      <Effects>
+        <Effect xsi:type="DamageEffect">
+        </Effect>
+      </Effects>
+    </Ability>
+  </EquipAbilities>
   <Armour>
     <Resistance Type="Bleed" Value="3" />
     <Resistance Type="Fire" Value="6" />
@@ -8,7 +27,8 @@
   <Weapon HitChance="10" Damage="3" CritChance="2" CritMult="1.1" />
   <UseAbiltiy Offensive="false" Cost="0" Name="test" Desc="Test ability">
     <Effects>
-      <Effect xsi:type="DamageEffect" />
+      <Effect xsi:type="DamageEffect">
+      </Effect>
     </Effects>
   </UseAbiltiy>
 </Item>
