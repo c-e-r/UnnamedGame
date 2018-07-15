@@ -70,6 +70,8 @@
     <Compile Include="Entity.cs" />
     <Compile Include="EntityEventArgs.cs" />
     <Compile Include="Item\Item.cs" />
+    <Compile Include="Menu\ItemInfoMenu.cs" />
+    <Compile Include="Menu\AbilityInfoMenu.cs" />
     <Compile Include="Menu\EventMenu.cs" />
     <Compile Include="Menu\MainMenu.cs" />
     <Compile Include="Console.cs" />
