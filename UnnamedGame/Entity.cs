@@ -51,6 +51,8 @@ namespace UnnamedGame
             EntityEvent += new TestEffect().Activate;
 
 
+            _hp = 3;
+
             TestEvent();
 
 
@@ -72,7 +74,16 @@ namespace UnnamedGame
         {
             return Name + " hp: " + _hp + " mp:" + _mp + " sp:" + _sp;
         }
+
+        public int CheckSpeed()
+        {
+            return Dice.D(8);
+        }
        
+        public bool IsDead()
+        {
+            return _hp <= 0;
+        }
 
         public void TestEvent()
         {

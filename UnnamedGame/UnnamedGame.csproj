@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="Combat.cs" />
     <Compile Include="Damage.cs" />
+    <Compile Include="Dice.cs" />
     <Compile Include="Effect\DamageEffect.cs" />
     <Compile Include="Effect\Effect.cs" />
     <Compile Include="Entity.cs" />

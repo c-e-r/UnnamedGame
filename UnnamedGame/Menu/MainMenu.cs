@@ -18,11 +18,11 @@ namespace UnnamedGame
             ThisMenu = () => new MainMenu(ctx, prevMenu);
 
             Options = new ObservableCollection<Option>();
-            Options.Add(new Option("Start Test Event", () =>Next(new EventMenu(Ctx, ThisMenu, "test.xml"))));
+            Options.Add(new Option("Start Test Event", () => Next(new EventMenu(Ctx, ThisMenu, "test.xml"))));
             Options.Add(new Option("submenu", () => Next(new Submenu(Ctx, ThisMenu))));
             Options.Add(new Option("Pass Time", () => Ctx.Time.Pass(3)));
-            Options.Add(new Option("Start Test Combat", () => new Combat(Ctx, Ctx.Player, new Entity(Ctx))));
-            Options.Add(new Option("Console Test", () => ctx.Cnsl.Append("test") ));
+            Options.Add(new Option("Start Test Combat", () => new Combat(Ctx, ThisMenu, ThisMenu, Ctx.Player, new Entity(Ctx))));
+            Options.Add(new Option("Console Test", () => ctx.Cnsl.Append("test")));
 
 
 
